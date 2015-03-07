@@ -1,0 +1,76 @@
+@import "imports";
+
+body.application-layout.invitations.edit,
+body.application-layout.invitations.update {
+  main {
+    @include outer-container;
+
+    padding: 0 25px;
+
+    section#registration {
+      @include outer-container;
+      @include span-columns(6);
+
+      @include media($mobile) {
+        @include span-columns(4);
+      }
+
+      border-right: 1px lighten($light-grey, 10%) solid;
+      margin-bottom: 50px;
+      margin-top: 50px;
+
+      @include media($mobile) {
+        border-right: none;
+      }
+
+      div {
+        @include outer-container;
+
+        margin-top: 7px;
+        text-align: center;
+
+        label {
+          @include span-columns(4);
+
+          font-family: $header-font-family;
+          padding-top: 7px;
+          text-align: right;
+        }
+
+        input[type=email],
+        input[type=file],
+        input[type=password],
+        input[type=text] {
+          @include span-columns(6);
+          @include omega;
+        }
+
+        i {
+          margin-left: -18px;
+          text-align: center;
+          width: 18px;
+        }
+      }
+    }
+
+    section.seperator {
+      display: none;
+
+      @include media($mobile) {
+        display: block;
+      }
+    }
+
+    section#login {
+      @include span-columns(6);
+
+      @include media($mobile) {
+        @include span-columns(4);
+      }
+
+      margin-bottom: 50px;
+      margin-top: 50px;
+      text-align: center;
+    }
+  }
+}

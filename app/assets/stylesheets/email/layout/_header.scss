@@ -1,0 +1,14 @@
+@import "bourbon";
+@import "variables";
+
+body.email-layout .header {
+  padding: 15px 25px;
+
+  .logo {
+    text-align: center;
+
+    img {
+      width: 20%;
+    }
+  }
+}

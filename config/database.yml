@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: prairie_development
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: prairie_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: prairie_production
+  host: localhost

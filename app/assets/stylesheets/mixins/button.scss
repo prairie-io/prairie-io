@@ -1,0 +1,36 @@
+@mixin button {
+  @include appearance(none);
+
+  background-color: $yellow;
+  border-color: $dark-yellow;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 0 0 3px 0;
+  color: $header-font-color;
+  display: inline-block;
+  font-family: $header-font-family;
+  font-size: 14px;
+  font-weight: $header-font-weight;
+  line-height: 1em;
+  margin-top: 3px;
+  padding: 7px 20px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $medium-yellow;
+  }
+
+  &:focus {
+    background-color: $medium-yellow;
+    outline-width: 0;
+  }
+
+  &:active {
+    background-color: $dark-yellow;
+    border-width: 0 0 0 0;
+    margin-bottom: 3px;
+    top: 3px;
+  }
+}

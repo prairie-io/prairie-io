@@ -1,0 +1,16 @@
+<p>
+  Hey friend,
+</p>
+
+<p class="intro">
+  You're invited to join us in building Silicon Prairie!
+</p>
+
+<div class="actions">
+  <%= link_to "Join the herd", accept_invitation_url(@user, :invitation_token => @token), class: "button" %>
+</div>
+
+<p class="signature">
+  Thanks,<br>
+  The Nerd Herd
+</p>

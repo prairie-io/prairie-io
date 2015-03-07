@@ -1,0 +1,158 @@
+<% future_activities = @activities.map{|a| a.date >= Time.now ? a : nil}.compact.reverse %>
+<% past_activities = @activities.map{|a| a.date < Time.now ? a : nil}.compact %>
+
+<% if current_user && current_user.is_admin %>
+  <div class="actions">
+    <%= link_to "New Event", new_event_path, class: :button %>
+  </div>
+<% end %>
+
+<% unless future_activities.empty? %>
+  <section class="container future">
+    <div class="margin"></div>
+    <div class="timeline">
+      <% future_activities.each_with_index do |activity, index| %>
+        <% index = index + 1 %>
+
+        <div class="row">
+          <% if index.even? %>
+            <div class="date date-even">
+              <%= local_time activity.date, "%m/%d/%y" %>
+            </div>
+            <div class="spacer even"><%= local_time activity.date, "%m/%d/%y" %></div>
+          <% end %>
+          <div class="event-container">
+          <%= link_to activity.object do %>
+            <div>
+              <% if index.odd? %>
+                <div class="image">
+                  <%= image_tag activity.image_url %>
+                </div>
+
+                <div class="details">
+                  <h3><%= activity.name %></h3>
+                </div>
+
+                <div class="description">
+                  <%= activity.description %>
+                </div>
+              <% else %>
+                <div class="details">
+                  <h3><%= activity.name %></h3>
+                </div>
+
+                <div class="image">
+                  <%= image_tag activity.image_url %>
+                </div>
+
+                <div class="description">
+                  <%= activity.description %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+          <% if index.odd? %>
+            <div class="spacer odd"><%= local_time activity.date, "%m/%d/%y" %></div>
+            <div class="date date-odd">
+              <%= local_time activity.date, "%m/%d/%y" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<% unless past_activities.empty? %>
+  <section class="container intermediate">
+    <p>Past events</p>
+  </section>
+
+  <section class="container past">
+    <div class="margin"></div>
+    <div class="timeline">
+      <% past_activities.each_with_index do |activity, index| %>
+        <% index = index + 1 %>
+
+        <div class="row">
+          <% if index.even? %>
+            <div class="date date-even">
+              <%= local_time activity.date, "%m/%d/%y" %>
+            </div>
+            <div class="spacer even"><%= local_time activity.date, "%m/%d/%y" %></div>
+          <% end %>
+          <div class="event-container">
+            <% if activity.type == :user  %>
+              <div class="user">
+                <% if index.odd? %>
+                  <div class="image">
+                    <%= image_tag activity.image_url %>
+                  </div>
+
+                  <div class="details">
+                    <h6><%= activity.name %></h6>
+                  </div>
+                <% else %>
+                  <div class="details">
+                    <h6><%= activity.name %></h6>
+                  </div>
+                  <div class="image">
+                    <%= image_tag activity.image_url %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <%= link_to activity.object do %>
+                <div>
+                  <% if index.odd? %>
+                    <div class="image">
+                      <%= image_tag activity.image_url %>
+                    </div>
+                    <div class="details">
+                      <h3><%= activity.name %></h3>
+                    </div>
+                    <div class="description">
+                      <%= activity.description %>
+                    </div>
+                  <% else %>
+                    <div class="details">
+                      <h3><%= activity.name %></h3>
+                    </div>
+
+                    <div class="image">
+                      <%= image_tag activity.image_url %>
+                    </div>
+
+                    <div class="description">
+                      <%= activity.description %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <% if index.odd? %>
+            <div class="spacer odd"><%= local_time activity.date, "%m/%d/%y" %></div>
+            <div class="date date-odd">
+              <%= local_time activity.date, "%m/%d/%y" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<% content_for :scripts do %>
+  <script>
+    function resizeMargins() {
+      $('.margin').each(function(i, obj) {
+        $(this).height($(this).parent().height());
+      });
+    }
+
+    $(window).resize(resizeMargins);
+    $(window).load(resizeMargins);
+  </script>
+<% end %>

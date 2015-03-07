@@ -1,0 +1,16 @@
+<p>
+  Hey <%= @user.display_name.split(" ").first %>,
+</p>
+
+<p class="intro">
+  Thanks for joining the herd!
+</p>
+
+<div class="actions">
+  <%= link_to "Confirm your account", confirmation_url(@user, confirmation_token: @token), class: "button" %>
+</div>
+
+<p class="signature">
+  Thanks,<br>
+  The Nerd Herd
+</p>

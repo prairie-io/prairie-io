@@ -1,0 +1,14 @@
+@mixin text_area {
+  @include appearance(none);
+
+  border-left-color: lighten($light-grey, 10%);
+  border-radius: 0;
+  border-width: 0 0 0 2px;
+  float: left;
+  padding: 7px;
+
+  &:focus {
+    border-left-color: lighten($yellow, 35%);
+    outline-width: 0;
+  }
+}

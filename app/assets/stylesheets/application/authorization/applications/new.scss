@@ -1,0 +1,76 @@
+@import "imports";
+
+body.application-layout.applications.new main,
+body.application-layout.applications.create main, {
+  @include outer-container;
+  padding: 0 25px;
+
+  section#editables {
+    @include outer-container;
+    @include span-columns(6);
+    @include shift(3);
+
+    @include media($mobile) {
+      @include span-columns(4);
+      @include shift(0);
+    }
+
+    @include omega;
+
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    #logo {
+      @include outer-container;
+
+      label {
+        margin-top: 32px;
+      }
+
+      .logo-preview {
+        @include span-columns(4);
+
+        img {
+          border-radius: 5%;
+          float: right;
+          max-height: 100px;
+          max-width: 100px;
+        }
+      }
+
+      input {
+        @include span-columns(8);
+
+        margin-top: 35px;
+      }
+    }
+
+    div {
+      @include outer-container;
+
+      margin-top: 7px;
+      text-align: center;
+
+      label {
+        @include span-columns(4);
+
+        font-family: $header-font-family;
+        padding-top: 7px;
+        text-align: right;
+      }
+
+      input[type=email],
+      input[type=password],
+      input[type=text] {
+        @include span-columns(6);
+        @include omega;
+      }
+
+      i {
+        margin-left: -18px;
+        text-align: center;
+        width: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import "bourbon";
+@import "variables";
+
+body.email-layout.invitation-instructions {
+  main {
+    padding: 0 25px;
+
+    p.intro {
+      a {
+        color: $yellow;
+        text-decoration: none;
+      }
+    }
+
+    div.actions {
+      padding-top: 25px;
+      text-align: center;
+    }
+
+    p.signature {
+      padding-top: 25px;
+    }
+  }
+}

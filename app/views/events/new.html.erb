@@ -1,0 +1,110 @@
+<% unless @event.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited the form from being submitted:</h2>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="event">
+  <%= form_for @event do |f| %>
+    <div id="logo"  class="field">
+      <% if @event.logo.file? %>
+        <div class="logo-preview">
+          <%= image_tag @event.logo.url(:thumb) %>
+        </div>
+      <% else %>
+        <%= f.label :logo, "Logo" %>
+      <% end %>
+
+      <%= f.file_field :logo %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name, placeholder: "Interface Fargo" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description, "Summary" %>
+      <%= f.text_field :description, placeholder: "Brilliant people talking about unique solutions to hard tech problems." %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description_html, "Long Description" %>
+      <%= f.text_area :description_html, placeholder: "<p>Hi</p>" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :starts_at, "Starts on" %>
+      <%= f.hidden_field :starts_at %>
+      <%= date_field_tag :starts_at_date, f.object.starts_at ? f.object.starts_at.to_date : nil, placeholder: Date.today.to_date.strftime("%-d %B, %Y") %>
+      <strong>at</strong>
+      <%= time_field_tag :starts_at_time, f.object.starts_at ? f.object.starts_at.to_time : nil, placeholder: "3:00 PM" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :ends_at, "Ends on" %>
+      <%= f.hidden_field :ends_at %>
+      <%= date_field_tag :ends_at_date, f.object.ends_at ? f.object.ends_at.to_date : nil, placeholder: Date.today.to_date.strftime("%-d %B, %Y") %>
+      <strong>at</strong>
+      <%= time_field_tag :ends_at_time, f.object.ends_at ? f.object.ends_at.to_time : nil, placeholder: "4:00 PM" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_description, "Location Description" %>
+      <%= f.text_field :location_description, placeholder: "The Boiler Room" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address1 %>
+      <%= f.text_field :address1, placeholder: "122 Broadway N" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address2 %>
+      <%= f.text_field :address2, placeholder: "Suite 111" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :city %>
+      <%= f.text_field :city, placeholder: "Fargo" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :state %>
+      <%= f.text_field :state, placeholder: "ND" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode, placeholder: "58102" %>
+    </div>
+
+    <div class="submit field">
+      <%= f.submit "Create" %>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :scripts do %>
+  <script>
+    var date_inputs = $('input[type=date]').pickadate();
+    var time_inputs = $('input[type=time]').pickatime();
+
+    $('form').submit(function(event) {
+      date_inputs.each(function() {
+        var self = $(this);
+        var hidden = self.parent().children('input[type=hidden]');
+        var date = self;
+        var time = self.parent().children('input[type=time]');
+
+        hidden.val(moment(date.val() + ' ' + time.val()));
+      });
+    });
+  </script>
+<% end %>

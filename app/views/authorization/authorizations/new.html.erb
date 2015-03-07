@@ -1,0 +1,36 @@
+<h2>Authorize</h2>
+
+<div class="images">
+  <span class="user"><%= image_tag current_user.avatar(:thumb) %></span>
+  <span class="application"><%= image_tag Doorkeeper::Application.find_by(uid: @pre_auth.client.uid).logo(:thumb) %></span>
+</div>
+
+<p><strong><%= @pre_auth.client.name %></strong> would like access to the following information from your account:</p>
+
+<% if @pre_auth.scopes %>
+    <ul class="permissions">
+      <% @pre_auth.scopes.each do |scope| %>
+        <li><%= scope %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<div class="actions">
+  <%= form_tag oauth_authorization_path, method: :post do %>
+    <%= hidden_field_tag :client_id, @pre_auth.client.uid %>
+    <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri %>
+    <%= hidden_field_tag :state, @pre_auth.state %>
+    <%= hidden_field_tag :response_type, @pre_auth.response_type %>
+    <%= hidden_field_tag :scope, @pre_auth.scope %>
+    <%= submit_tag "Authorize" %>
+  <% end %>
+
+  <%= form_tag oauth_authorization_path, method: :delete do %>
+    <%= hidden_field_tag :client_id, @pre_auth.client.uid %>
+    <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri %>
+    <%= hidden_field_tag :state, @pre_auth.state %>
+    <%= hidden_field_tag :response_type, @pre_auth.response_type %>
+    <%= hidden_field_tag :scope, @pre_auth.scope %>
+    <%= submit_tag "Deny" %>
+  <% end %>
+</div>

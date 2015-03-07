@@ -1,0 +1,182 @@
+@import "imports";
+
+body.home-layout.activities.index main {
+  .actions {
+    text-align: center;
+  }
+  
+  section.container {
+    @include outer-container;
+
+    padding: 25px;
+
+    .timeline {
+      .row {
+        @include row;
+      }
+
+      .spacer {
+        @include span-columns(1);
+
+        @include media($mobile) {
+          @include span-columns(1);
+
+          margin-right: 0;
+          font-size: 14px;
+          text-align: center;
+        }
+
+        font-size: 0px;
+        margin-top: 30px;
+        width: 9.708625%;
+
+        &.odd {
+          margin-right: 1.178825%;
+
+          @include media($mobile) {
+            margin-right: 0;
+          }
+        }
+
+        &.even {
+          margin-right: 0;
+        }
+      }
+
+      .date {
+        @include span-columns(2);
+
+        @include media($mobile) {
+          display: none;
+        }
+
+        font-size: .75em;
+        margin-top: 21px;
+      }
+
+      img {
+        border-radius: 5%;
+      }
+
+      .event-container {
+        @include outer-container;
+        @include span-columns(5);
+
+        @include media($mobile) {
+          @include omega;
+          @include span-columns(3);
+
+          float: right;
+          margin-right: 0px;
+          margin-top: 14px;
+          width: 80.56723%;
+        }
+
+        border: 2px solid lighten($light-grey, 10%);
+        border-radius: 3px;
+        margin-right: 0;
+        padding: 10px;
+
+        &:hover {
+          border-width: 4px;
+          padding: 8px;
+        }
+
+        .image {
+          @include span-columns(2);
+
+          &:nth-child(even) {
+            @include omega;
+          }
+
+          @include media($mobile) {
+            float: right;
+            margin-right: 0;
+          }
+        }
+
+        .details {
+          @include span-columns(10);
+
+          &:nth-child(even) {
+            @include omega;
+          }
+
+          h3 {
+            margin: 7px 0;
+          }
+        }
+
+        .description {
+          @include span-columns(12);
+          @include omega;
+
+          margin-bottom: 0;
+          font-size: 14px;
+        }
+
+        a {
+          color: $base-font-color;
+          text-decoration: none;
+        }
+      }
+
+      .even, .odd {
+        border-bottom: 2px solid lighten($light-grey, 10%);
+      }
+
+      .date-even {
+        @include shift(4);
+
+        margin-right: 1.178825%;
+        text-align: right;
+      }
+    }
+
+    &.past {
+      .margin {
+        background: lighten($light-grey, 10%);
+      }
+    }
+
+    .margin {
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      margin-left: -1px;
+
+      @include media($mobile) {
+        left: 25px;
+      }
+    }
+
+    &.intermediate {
+      padding: 0;
+
+      > p {
+        color: $grey;
+        margin-top: 12px;
+        text-align: center;
+
+        @include media($mobile) {
+          margin-left: 25px;
+          text-align: left;
+        }
+      }
+    }
+
+    &.future {
+      .margin {
+        background: lighten($yellow, 35%);
+      }
+
+      .even, .odd {
+        border-bottom: 2px solid lighten($yellow, 35%);
+      }
+
+      .event-container {
+        border-color: lighten($yellow, 35%);
+      }
+    }
+  }
+}

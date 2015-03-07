@@ -1,0 +1,35 @@
+// Bourbon Neat outer-container Setting
+$max-width: 960px;
+
+// Colors
+$white: #FFFFFF;
+$black: #545454;
+$grey: #707070;
+$light-grey: #D6D6D6;
+$yellow: #FDDE00;
+$medium-yellow: #EACE02;
+$dark-yellow: #D3B828;
+
+$alert-color: #FDDE00;
+$notice-color: #707070;
+
+
+// Typography
+$base-font-family: 'Open Sans', sans-serif;
+$header-font-family: 'Open Sans Condensed', sans-serif;
+$base-font-color: $grey;
+$base-font-weight: 300;
+$header-font-color: $black;
+$header-font-weight: 700;
+$base-font-size: 18px;
+$base-line-height: $base-font-size;
+
+// Body Color
+$base-body-color: #FFFFFF;
+
+$border-box-sizing: true;
+
+// Viewports
+$desktop: new-breakpoint(min-width 801px 12);
+$tablet: new-breakpoint(min-width 600px max-width 800px 12);
+$mobile: new-breakpoint(max-width 599px 4);

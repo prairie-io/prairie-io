@@ -1,0 +1,55 @@
+@import "imports";
+
+body.application-layout.sessions.new main {
+  @include outer-container;
+
+  padding: 0 25px;
+
+  section#login {
+    @include outer-container;
+    @include span-columns(6);
+
+    @include media($mobile) {
+      @include span-columns(4);
+    }
+
+    border-right: 1px lighten($light-grey, 10%) solid;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    @include media($mobile) {
+      border-right: none;
+    }
+
+    div {
+      margin-top: 7px;
+      text-align: center;
+
+      i {
+        margin-left: -18px;
+        text-align: center;
+        width: 18px;
+      }
+    }
+  }
+
+  section.seperator {
+    display: none;
+
+    @include media($mobile) {
+      display: block;
+    }
+  }
+
+  section#help {
+    @include span-columns(6);
+
+    @include media($mobile) {
+      @include span-columns(4);
+    }
+
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,13 @@
+@mixin text_input {
+  @include appearance(none);
+
+  border-bottom-color: lighten($light-grey, 10%);
+  border-radius: 0;
+  border-width: 0 0 2px 0;
+  padding: 7px;
+
+  &:focus {
+    border-bottom-color: lighten($yellow, 35%);
+    outline-width: 0;
+  }
+}

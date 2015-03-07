@@ -1,0 +1,25 @@
+@import "bourbon";
+@import "variables";
+
+body.email-layout.ticket-mailer.confirmation {
+  main {
+    padding: 0 25px;
+
+    a {
+      color: $yellow;
+      text-decoration: none;
+    }
+
+    address {
+      padding-left: 25px;
+    }
+
+    p.description {
+      padding-top: 25px;
+    }
+
+    p.signature {
+      padding-top: 25px;
+    }
+  }
+}

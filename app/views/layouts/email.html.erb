@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<%= stylesheet_link_tag "email" %>
+
+<body class="email-layout <%= body_class %>">
+  <%= render partial: "layouts/email/header" %>
+
+  <main>
+    <%= yield %>
+  </main>
+</body>
+
+</html>

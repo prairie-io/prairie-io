@@ -1,0 +1,40 @@
+@import "imports";
+
+h1, h2, h3, h4, h5, h6 {
+  color: $header-font-color;
+  font-family: $header-font-family;
+  line-height: 1.25em;
+  margin: 0 0 0.5em;
+  text-rendering: optimizeLegibility; // Fix the character spacing for headings
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 0.7em;
+}
+
+h3 {
+  font-size: 28px;
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  font-size: 24px;
+  margin-bottom: 0.25em;
+}
+
+h5 {
+  font-size: 18px;
+  margin-bottom: 0.25em;
+}
+
+h6 {
+  font-size: 14px;
+  margin-bottom: 0.25em;
+  text-transform: uppercase;
+}

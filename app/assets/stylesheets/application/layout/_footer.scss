@@ -1,0 +1,62 @@
+@import "imports";
+
+body.application-layout footer {
+  @include outer-container;
+
+  margin-top: 25px;
+  padding: 0 25px;
+
+  .branding {
+    @include span-columns(4);
+
+    margin: 14px 0;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
+
+  .socials {
+    @include span-columns(8);
+
+    text-align: right;
+
+    ul {
+      margin: 14px 0;
+
+      li {
+        display: inline;
+
+        a {
+          color: $black;
+          margin-left: 10px;
+
+          &.twitter:hover {
+            color: #55ACEE;
+          }
+
+          &.google:hover {
+            color: #D34836;
+          }
+
+          &.youtube:hover {
+            color: #cd201f;
+          }
+
+          &.facebook:hover {
+            color: #3b5998;
+          }
+
+          &.linkedin:hover {
+            color: #007BB6;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "imports";
+
+@if $border-box-sizing == true {
+  html { // http://bit.ly/1qk2tVR
+    @include box-sizing(border-box);
+  }
+
+  * {
+    &, &:before, &:after {
+      @include box-sizing(inherit);
+    }
+  }
+}
+
+body {
+  color: $base-font-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+
+  img {
+    max-width: 100%;
+  }
+
+  p {
+    line-height: 2em;
+  }
+}

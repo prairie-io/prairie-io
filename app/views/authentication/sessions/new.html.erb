@@ -1,0 +1,37 @@
+<% content_for :messages do %>
+  <% unless resource.errors.count == 0 %>
+    <div id="error_explanation">
+      <i class="fa fa-times"></i>
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<section id="login">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div>
+      <i class="fa fa-envelope"></i> <%= f.email_field :email, autofocus: true, placeholder: "nerd@prairie.io" %>
+    </div>
+
+    <div>
+      <i class="fa fa-lock"></i> <%= f.password_field :password, autocomplete: "off", placeholder: "not_password123" %>
+    </div>
+
+    <div>
+      <%= f.submit "Login", class: "button" %>
+    </div>
+  <% end %>
+</section>
+
+<%= render partial: "layouts/shared/seperator" %>
+
+<section id="help">
+  <p>Not a member? We'd love your help building Silicon Prairie!</p>
+  <%= render partial: "layouts/shared/join_button" %>
+</section>
+

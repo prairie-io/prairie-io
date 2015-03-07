@@ -1,0 +1,10 @@
+<% if current_user && current_user.is_admin %>
+  <div class="actions">
+    <small class="<%= activity.object.is_approved ? "approved" : "unapproved" %>"><%= activity.object.is_approved ? "approved" : "unapproved" %></small>
+    <% if activity.object.is_approved %>
+      <%= link_to "Unapprove", "", class: :button %>
+    <% else %>
+      <%= link_to "Approve", "", class: :button %>
+    <% end %>
+  </div>
+<% end %>

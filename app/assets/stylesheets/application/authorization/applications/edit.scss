@@ -1,0 +1,120 @@
+@import "imports";
+
+body.application-layout.applications.edit main,
+body.application-layout.applications.update main {
+  @include outer-container;
+  padding: 0 25px;
+
+  section#editables {
+    @include outer-container;
+    @include span-columns(6);
+
+    @include media($mobile) {
+      @include span-columns(4);
+    }
+
+    border-right: 1px lighten($light-grey, 10%) solid;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    @include media($mobile) {
+      border-right: none;
+    }
+
+    #logo {
+      @include outer-container;
+
+      .logo-preview {
+        @include span-columns(4);
+
+        label {
+          margin-top: 32px;
+        }
+
+        img {
+          border-radius: 5%;
+          float: right;
+          max-height: 100px;
+          max-width: 100px;
+        }
+      }
+
+      input {
+        @include span-columns(8);
+
+        margin-top: 35px;
+      }
+    }
+
+    div {
+      @include outer-container;
+
+      margin-top: 7px;
+      text-align: center;
+
+      label {
+        @include span-columns(4);
+
+        font-family: $header-font-family;
+        padding-top: 7px;
+        text-align: right;
+      }
+
+      input[type=email],
+      input[type=password],
+      input[type=text] {
+        @include span-columns(6);
+        @include omega;
+      }
+
+      i {
+        margin-left: -18px;
+        text-align: center;
+        width: 18px;
+      }
+    }
+  }
+
+  section.seperator {
+    display: none;
+
+    @include media($mobile) {
+      display: block;
+    }
+  }
+
+  section#credentials {
+    @include span-columns(6);
+
+    @include media($mobile) {
+      @include span-columns(4);
+    }
+
+    @include omega;
+
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    text-align: center;
+
+    h5 {
+      margin-bottom: 14px;
+    }
+
+    div {
+      @include outer-container;
+
+      font-size: 8px;
+      margin-top: 7px;
+
+      strong {
+        font-size: 10px;
+      }
+
+      &:last-child {
+        margin-top: 14px;
+      }
+    }
+  }
+}

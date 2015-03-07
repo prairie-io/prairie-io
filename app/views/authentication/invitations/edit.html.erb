@@ -1,0 +1,51 @@
+<% content_for :messages do %>
+  <% unless resource.errors.count == 0 %>
+    <div id="error_explanation">
+      <i class="fa fa-times"></i>
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<section id="registration">
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :invitation_token %>
+
+    <div id="avatar">
+      <%= f.label :avatar, "Avatar" %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div>
+      <%= f.label :name, "Full Name", class: "required" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "Barry Bison" %>
+    </div>
+
+    <div>
+      <%= f.label :email, "Email Address", class: "required" %>
+      <%= f.email_field :email, placeholder: "nerd@prairie.io" %>
+    </div>
+
+    <div>
+      <%= f.label :password, class: "required" %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: "not_password123" %>
+    </div>
+
+    <div>
+      <%= f.submit "Join the herd" %>
+    </div>
+  <% end %>
+</section>
+
+<%= render partial: "layouts/shared/seperator" %>
+
+<section id="login">
+  <p>Already a member? Welcome back!</p>
+  <%= link_to "Login", new_user_session_path, class: "button" %>
+</section>
+

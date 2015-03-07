@@ -1,0 +1,42 @@
+@import "imports";
+
+section.seperator {
+  height: 80px;
+
+  div:nth-child(1), div:nth-child(3) {
+    @include span-columns(18 of 39);
+
+    @include media($tablet) {
+      @include span-columns(17 of 39);
+    }
+
+    @include media($mobile) {
+      @include span-columns(16 of 39);
+    }
+
+    border-bottom: 1px solid $light-grey;
+    height: 40px;
+    margin-bottom: 40px;
+  }
+
+  div:nth-child(2) {
+    @include span-columns(3 of 39);
+
+    @include media($tablet) {
+      @include span-columns(5 of 39);
+    }
+
+    @include media($mobile) {
+      @include span-columns(7 of 39);
+    }
+
+    height: 80px;
+    text-align: center;
+    width: 51px;
+
+    img {
+      height: 80px;
+      width: 51px;
+    }
+  }
+}

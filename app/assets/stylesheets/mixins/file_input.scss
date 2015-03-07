@@ -1,0 +1,13 @@
+@mixin file_input {
+  @include appearance(none);
+
+  font-family: "Open Sans Condensed";
+  line-height: 1ex;
+  padding: 7px;
+  width: 234px;
+
+  &:focus {
+    color: lighten($yellow, 35%);
+    outline-width: 0;
+  }
+}

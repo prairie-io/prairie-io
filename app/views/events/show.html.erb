@@ -1,0 +1,67 @@
+<div class="event">
+  <div id="map"></div>
+
+  <section id="content">
+
+    <%= image_tag @event.logo(:medium), class: "logo" %>
+    <h1 class="title"><%= @event.name %></h1>
+    <small><%= local_time @event.localized_starts_at, "%m/%d/%y" %><%= " - " if @event.ends_at && @event.ends_at.to_date > @event.starts_at.to_date %><%= local_time @event.localized_ends_at, "%m/%d/%y" if @event.ends_at && @event.ends_at.to_date > @event.starts_at.to_date %> <%= local_time @event.localized_starts_at, "%l:%M%P" %><%= " - " if @event.ends_at %><%= local_time(@event.localized_ends_at, "%l:%M%P") if @event.ends_at %></small>
+
+    <div class="description">
+      <%== @event.description_html %>
+    </div>
+
+    <div class="tickets">
+      <% if current_user && current_user.attending?(@event) %>
+        You're going! :)
+      <% else %>
+        <% if @event.starts_at > Time.now && @event.is_attendable? %>
+          <%= button_to "Attend event", event_tickets_path(@event), class: "button", method: :post %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% unless @event.youtube_video_id.blank? %>
+      <div class="video">
+        <%== youtube_video(@event.youtube_video_id) %>
+      </div>
+    <% end %>
+  </section>
+
+</div>
+
+<% content_for :scripts do %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+  <script>
+    function initialize() {
+      var myLatlng = { lat: <%= @event.latitude %>, lng: <%= @event.longitude %>}
+      var mapOptions = {
+        center: myLatlng,
+        zoom: 14
+      };
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+var contentString = '<address>' +
+                    '<h6><%= @event.location_description if @event.location_description %></h6>' +
+                    '<%= @event.full_street_address %>' +
+                    '</address>';
+
+
+      // To add the marker to the map, use the 'map' property
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+           content: contentString
+       });
+
+       google.maps.event.addListener(marker, 'click', function() {
+         infowindow.open(map,marker);
+       });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+<% end %>

@@ -1,0 +1,58 @@
+@import "imports";
+
+body.home-layout.events.new main {
+  @include outer-container;
+
+  .event {
+    @include span-columns(6);
+    @include shift(3);
+    @include omega;
+
+
+    div.field {
+      @include outer-container;
+
+      margin-top: 7px;
+      text-align: left;
+
+      label {
+        @include span-columns(4);
+
+        font-family: $header-font-family;
+        padding-top: 7px;
+        text-align: right;
+      }
+
+      input[type=email],
+      input[type=password],
+      input[type=text], {
+        @include span-columns(6);
+        @include omega;
+      }
+
+      strong {
+        font-family: $header-font-family;
+        font-weight: 300;
+        padding-top: 7px;
+      }
+
+      input[type=time] {
+        width: 90px;
+      }
+
+      input[type=date] {
+        width: 150px;
+      }
+
+      i {
+        margin-left: -18px;
+        text-align: center;
+        width: 18px;
+      }
+    }
+
+    div.submit {
+      text-align: center;
+    }
+  }
+}

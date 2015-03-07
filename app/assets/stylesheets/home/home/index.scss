@@ -1,0 +1,52 @@
+@import "imports";
+
+body.home-layout.home.index main {
+  section#welcome {
+    background-image: image-url("home/downtown-fargo.jpg");
+    background-position: center;
+    background-size: cover;
+    color: $white;
+    height: 500px;
+    padding: 25px;
+    text-align: center;
+
+    @include media($mobile) {
+      padding-top: 0;
+    }
+
+    h1 {
+      color: $white;
+      padding-top: 100px;
+    }
+  }
+
+  #content {
+    @include outer-container;
+
+    padding: 0 25px;
+
+    section {
+      margin-top: 25px;
+
+      &#what-we-do {
+        text-align: center;
+      }
+
+      p.join {
+        text-align: center;
+      }
+
+      &#members {
+        .row {
+          margin-top: -5px;
+        }
+
+        .member {
+          display: inline-block;
+          margin-right: -5px;
+          width: 10%;
+        }
+      }
+    }
+  }
+}

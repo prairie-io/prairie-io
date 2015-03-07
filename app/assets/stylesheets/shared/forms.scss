@@ -1,0 +1,21 @@
+@import "imports";
+
+input[type=date],
+input[type=email],
+input[type=password],
+input[type=text],
+input[type=time] {
+  @include text_input;
+}
+
+textarea {
+  @include text_area;
+}
+
+input[type=file] {
+  @include file_input;
+}
+
+label.error {
+  color: lighten(red, 20%);
+}

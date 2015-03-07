@@ -1,0 +1,82 @@
+@import "imports";
+
+body.application-layout.authorizations.new {
+  main {
+    @include outer-container;
+
+    padding: 50px 25px;
+
+    h2 {
+      @include span-columns(9);
+
+      @include media($mobile) {
+        @include span-columns(2);
+      }
+
+      margin-top: 1em;
+    }
+
+    .images {
+      @include span-columns(3);
+      @include omega;
+      @include outer-container;
+
+      @include media($mobile) {
+        @include span-columns(2);
+        @include omega;
+      }
+
+      span {
+        @include span-columns(6);
+
+        background-clip: padding-box;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 6px;
+        float: right;
+        height: 87px;
+        padding: 5px 5px 0 5px;
+        width: 85px;
+
+        @include media($mobile) {
+          float: right;
+        }
+
+        img {
+          border-radius: 3px;
+          height: 75px;
+          width: 75px;
+        }
+
+        &.application {
+          @include omega;
+
+          margin-top: 20px;
+          margin-right: -25%;
+        }
+      }
+    }
+
+    p {
+      @include span-columns(12);
+      @include omega;
+    }
+
+    ul.permissions {
+      @include span-columns(12);
+      @include omega;
+    }
+
+    .actions {
+      @include span-columns(12);
+      @include omega;
+
+      margin-top: 1em;
+
+      form {
+        display: inline-block;
+        margin-right: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+<% unless @user.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited the form from being submitted:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section id="profile">
+  <%= form_for @user do |f| %>
+    <div id="avatar">
+      <% if @user.avatar.file? %>
+        <div class="avatar-preview">
+          <%= image_tag @user.avatar.url(:thumb) %>
+        </div>
+      <% else %>
+        <%= f.label :avatar, "Avatar" %>
+      <% end %>
+
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div>
+      <%= f.label :name, "Full Name" %>
+      <%= f.text_field :name, placeholder: "Boris Bison" %>
+    </div>
+
+    <div>
+      <%= f.label :email, "Email Address" %>
+      <%= f.email_field :email, placeholder: "nerd@prairie.io" %>
+    </div>
+
+    <div class="submit">
+      <%= f.submit "Save Settings" %>
+    </div>
+  <% end %>
+</section>
+
+<%= render partial: "layouts/shared/seperator" %>
+
+<section id="password">
+  <%= form_for @user do |f| %>
+    <div>
+      <%= f.label :current_password, "Current Password" %>
+      <%= f.password_field :current_password, placeholder: "not_password123" %>
+    </div>
+
+    <div>
+      <%= f.label :password, "New Password" %>
+      <%= f.password_field :password, placeholder: "still_not_password123" %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation, placeholder: "still_not_password123" %>
+    </div>
+
+    <div class="submit">
+      <%= f.submit "Update Password" %>
+    </div>
+  <% end %>
+</section>
+
+<section id="authorizations">
+  <ul>
+    <h4>Authorizations</h4>
+    <p>These are applications you have authorized to act on your behalf.</p>
+    <% @user.authorizations.each do |authorization| %>
+      <li>
+        <%= link_to authorization.application.home_url do %>
+          <div class="logo">
+            <%= image_tag authorization.application.logo(:thumb) %>
+          </div>
+          <div class="description">
+            <strong><%= authorization.application.name %></strong><br>
+            <%= authorization.application.home_url %>
+          </div>
+          <div class="actions">
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section id="applications">
+  <ul>
+    <h4>Applications</h4>
+    <p>These are applications you have registered to use the API.</p>
+      <li>
+        <%= link_to new_oauth_application_path do %>
+          <div class="logo">
+            <%= image_tag "create-icon.png" %>
+          </div>
+          <div class="description">
+            <strong>New application</strong><br>
+            You know you want one.
+          </div>
+          <div class="details">
+          </div>
+        <% end %>
+      </li>
+    <% @user.applications.each do |application| %>
+        <li>
+          <%= link_to edit_oauth_application_path(application) do %>
+            <div class="logo">
+              <%= image_tag application.logo(:thumb) %>
+            </div>
+            <div class="description">
+              <strong><%= application.name %></strong><br>
+              <%= application.redirect_uri %>
+            </div>
+            <div class="details">
+              <%= pluralize application.authorizations.count(:resource_owner_id), "user" %>
+            </div>
+          <% end %>
+        </li>
+    <% end %>
+  </ul>
+</section>

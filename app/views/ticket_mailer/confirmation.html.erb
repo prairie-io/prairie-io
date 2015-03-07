@@ -1,0 +1,40 @@
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Event",
+    "name": "<%= @event.name %>",
+    "location": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "<%= @event.city %>",
+        "addressRegion": "<%= @event.state %>",
+        "postalCode": "<%= @event.zipcode %>",
+        "streetAddress": "<%= @event.first_line %>"
+      },
+      "name": "<%= @event.location_description %>"
+    },
+    "startDate": "<%= @event.localized_starts_at %>",
+    "endDate": "<%= @event.localized_ends_at %>",
+    "url": "<%= event_url(@event) %>"
+  }
+</script>
+
+<p>
+  Hey <%= @user.display_name.split(" ").first %>,
+</p>
+
+<p class="description">
+  <% local_time = @event.starts_at.in_time_zone(@event.time_zone) %>
+  <strong><%= link_to @event.name, event_url(@event) %></strong> is <%= local_time.strftime("%A, %B #{local_time.day.ordinalize} at %l:%m%P") %>. We'll see you there!
+</p>
+
+<address>
+  <%= @event.location_description %><br>
+  <%= @event.full_street_address %>
+</address>
+
+<p class="signature">
+  Thanks,<br>
+  The Nerd Herd
+</p>

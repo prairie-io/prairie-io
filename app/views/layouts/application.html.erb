@@ -14,7 +14,7 @@
 </head>
 
 <body class="application-layout <%= body_class %>">
-  <%= render partial: "layouts/application/header" %>
+  <%= render partial: "layouts/shared/header" %>
   <%= render partial: "layouts/shared/flash_messages" %>
   <%= yield :messages %>
 
@@ -22,7 +22,7 @@
     <%= yield %>
   </main>
 
-  <%= render partial: "layouts/application/footer" %>
+  <%= render partial: "layouts/shared/footer" %>
   <%= render partial: "layouts/shared/konami" %>
 
   <%= javascript_include_tag "application" %>

@@ -1,5 +1,6 @@
 @import "imports";
 
+body.application-layout header,
 body.home-layout header {
   @include outer-container;
 
@@ -101,7 +102,8 @@ body.home-layout header {
             top: 0;
           }
 
-          a:hover {
+          a:hover,
+          a.active {
             border-bottom: 2px $black solid;
           }
         }

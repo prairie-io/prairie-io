@@ -11,12 +11,16 @@ body.application-layout footer {
 
     margin: 14px 0;
 
+    h6 {
+      margin: 0;
+    }
+
     a {
       color: $black;
       text-decoration: none;
 
       &:hover {
-        color: $yellow;
+        color: $dark-yellow;
       }
     }
   }

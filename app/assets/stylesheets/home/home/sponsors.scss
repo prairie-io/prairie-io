@@ -30,11 +30,21 @@ body.home-layout.home.sponsors main {
 
       .logo {
         @include span-columns(3);
+
+        @include media($mobile) {
+          @include span-columns(2);
+          @include shift(1);
+          @include omega;
+        }
       }
 
       .description {
         @include span-columns(9);
         @include omega;
+
+        @include media($mobile) {
+          @include span-columns(4);
+        }
 
         p {
           margin-top: 0;

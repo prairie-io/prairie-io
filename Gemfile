@@ -3,6 +3,7 @@ source "http://rubygems.org"
 ruby "2.2.1"
 gem "rails"
 
+gem "active_link_to"
 gem "awesome_print"
 gem "aws-sdk", "~> 1.5.7"
 gem "bourbon"

@@ -1,0 +1,54 @@
+@import "imports";
+
+body.home-layout.home.sponsors main {
+  @include outer-container;
+  padding: 0 25px;
+
+  h1 {
+    @include span-columns(6);
+    @include shift(3);
+    @include omega;
+
+    @include media($mobile) {
+      @include span-columns(4);
+      @include shift(0);
+    }
+
+    border-bottom: 1px $light-grey solid;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      @include span-columns(12);
+      @include outer-container;
+      @include omega;
+
+      .logo {
+        @include span-columns(3);
+      }
+
+      .description {
+        @include span-columns(9);
+        @include omega;
+
+        p {
+          margin-top: 0;
+
+          a {
+            color: $dark-yellow;
+            text-decoration: none;
+
+            &:hover {
+              color: $base-font-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

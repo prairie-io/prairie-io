@@ -5,4 +5,8 @@ class HomeController < ApplicationController
   def index
     @title = "Welcome"
   end
+
+  def sponsors
+    @title = "Sponsors"
+  end
 end

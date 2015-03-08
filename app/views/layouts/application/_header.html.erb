@@ -11,6 +11,7 @@
       <% unless Event.count == 0 %>
         <li class="link"><%= link_to "Events", activities_path %></li>
       <% end %>
+      <li class="link"><%= link_to "Sponsors", sponsors_path %></li>
       <% if current_user %>
         <li class="link">
           <%= link_to "Account", edit_user_path(current_user) %>

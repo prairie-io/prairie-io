@@ -1,47 +1,45 @@
 <section id="welcome">
   <h1>Welcome to Silicon Prairie</h1>
-  <p>The home to a herd of high-tech nerds in the upper midwest where ideas flourish and knowledge spreads like a prairie fire.</p>
+  <p>A high tech, open-sourced tech community in the upper midwest and everyone's invited!</p>
   <%= render partial: "layouts/shared/join_button" %>
 </section>
 
 <div id="content">
   <section id="what-we-do">
     <p>We <strong>challenge</strong> what's possible in technology.</p>
-    <p>We <strong>plan</strong> regular meet-ups like Interface Fargo.</p>
+    <p>We <strong>plan</strong> regular meet-ups like <%= link_to "Interface Fargo", Event.where(name: "Interface Fargo").chronological.first, target: "_blank" %>.</p>
     <p>We <strong>educate</strong> to strengthen our community.</p>
     <p>We <strong>grow</strong> a strong social network of nerds.</p>
   </section>
 
   <%= render partial: "layouts/shared/seperator" %>
 
-  <section id="your-help">
-
-    <h2>Membership</h2>
-
-    <p>
-      While we have many big lofty goals for the future, we feel that the best possible
-      way to accomplish them is simple, <strong>community</strong>.
-    </p>
-
-    <p class="join">
-      We're at <strong><%= User.count %></strong> members and counting.<br>
-      <%= render partial: "layouts/shared/join_button" %>
-    </p>
-
-  </section>
-
-  <section id="members">
-    <% unless User.published.count == 0 %>
-
-      <% User.published.each_slice(10) do |slice| %>
-        <div class="row">
-          <% slice.each do |user| %>
-            <div class="member">
-              <%= image_tag user.avatar.url(:medium) %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+  <section id="we-are">
+    <ul>
+      <li>
+        <p>
+          We are <strong><%= User.count %></strong> <%= "nerd".pluralize(User.count) %>.
+        </p>
+        <p>
+          <%= render partial: "layouts/shared/join_button" %>
+        </p>
+      </li>
+      <li>
+        <p>
+          We've hosted <strong><%= Event.count %></strong> <%= "event".pluralize(Event.count) %>.
+        </p>
+        <p>
+          <%= link_to "Attend an event", activities_path, class: :button %>
+        </p>
+      </li>
+      <li>
+        <p>
+          We have <strong><%= Partner.count %></strong> <%= "partner".pluralize(Partner.count) %>.
+        </p>
+        <p>
+          <%= link_to "Become a partner", "", class: :button %>
+        </p>
+      </li>
+    </ul>
   </section>
 </div>

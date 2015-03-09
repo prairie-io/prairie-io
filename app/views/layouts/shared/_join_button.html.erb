@@ -1,3 +1,5 @@
-<% unless current_user %>
-  <%= link_to "Join the herd", new_user_registration_path, class: "button" %>
+<% if current_user %>
+  <%= link_to "Invite a nerd", new_user_invitation_path, class: :button %>
+<% else %>
+  <%= link_to "Join the herd", new_user_registration_path, class: :button %>
 <% end %>

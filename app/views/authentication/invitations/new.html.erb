@@ -1,0 +1,70 @@
+<% content_for :messages do %>
+  <% unless resource.errors.count == 0 %>
+    <div id="error_explanation">
+      <i class="fa fa-times"></i>
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<h2>Invite a Nerd</h2>
+
+<section id="invitation">
+  <div class="window">
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+      <div class="navigation">
+        <ul class="window-buttons">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div class="title">
+          New Message
+        </div>
+        <div class="actions">
+          <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
+        </div>
+      </div>
+      <hr>
+      <div class="page">
+        <div class="send-header">
+          <p>
+            <strong>To:</strong> <%= f.text_field :email, placeholder: "nerd@prairie.io" %>
+          </p>
+
+          <p>
+            <strong>Subject: </strong>
+          </p>
+
+          <p>
+            <strong>From:</strong>
+          </p>
+        </div>
+
+        <div class="message-body">
+          <p>
+            Hey friend,
+          </p>
+
+          <p class="intro">
+            You're invited to join us in building Silicon Prairie!
+          </p>
+
+          <div class="actions">
+            <%= link_to "Join the herd", accept_invitation_url(@user, :invitation_token => @token), class: "button" %>
+          </div>
+
+          <p class="signature">
+            Thanks,<br>
+            The Nerd Herd
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

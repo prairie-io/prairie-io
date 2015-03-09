@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214192411) do
+ActiveRecord::Schema.define(version: 20150309001151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.text     "description_html"
     t.string   "address1"
     t.string   "address2"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150214192411) do
     t.string   "twitter_handle"
   end
 
-  create_table "oauth_access_grants", force: true do |t|
+  create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
     t.integer  "application_id",    null: false
     t.string   "token",             null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20150214192411) do
 
   add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
-  create_table "oauth_access_tokens", force: true do |t|
+  create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer  "resource_owner_id"
     t.integer  "application_id"
     t.string   "token",             null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20150214192411) do
   add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
-  create_table "oauth_applications", force: true do |t|
+  create_table "oauth_applications", force: :cascade do |t|
     t.string   "name",              null: false
     t.string   "uid",               null: false
     t.string   "secret",            null: false
@@ -92,7 +92,19 @@ ActiveRecord::Schema.define(version: 20150214192411) do
   add_index "oauth_applications", ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type", using: :btree
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
-  create_table "tickets", force: true do |t|
+  create_table "partners", force: :cascade do |t|
+    t.string   "name",              null: false
+    t.text     "description_html",  null: false
+    t.string   "url",               null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
@@ -102,7 +114,7 @@ ActiveRecord::Schema.define(version: 20150214192411) do
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
   add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "time_zone"
     t.string   "confirmation_token"

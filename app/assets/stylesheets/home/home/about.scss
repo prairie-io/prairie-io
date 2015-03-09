@@ -1,0 +1,78 @@
+@import "imports";
+
+body.home-layout.home.about main {
+  @include outer-container;
+
+  padding: 0 25px;
+
+  h1 {
+    @include span-columns(4);
+    @include shift(4);
+    @include omega;
+
+    @include media($mobile) {
+      @include span-columns(4);
+      @include shift(0);
+    }
+
+    border-bottom: 1px $light-grey solid;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+
+  p.description {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  section.story {
+    @include span-columns(12);
+
+    p {
+      margin-top: 0;
+    }
+  }
+
+  section.values {
+    @include span-columns(12);
+
+    ul {
+      @include outer-container;
+
+      list-style: none;
+      padding: 0;
+
+      li {
+        @include span-columns(1 of 5);
+
+        text-align: center;
+
+        p {
+          font-size: .75em;
+        }
+      }
+    }
+  }
+
+  section.roadmap {
+    @include span-columns(12);
+
+    ul.stages {
+      @include outer-container;
+
+      list-style: none;
+      padding: 0;
+
+      li.stage {
+        @include span-columns(1 of 3);
+
+        h3 {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

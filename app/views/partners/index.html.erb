@@ -1,0 +1,18 @@
+<h1>Our Partners</h1>
+
+<% if @partners.count > 0 %>
+  <ul>
+    <% @partners.each do |partner| %>
+      <li>
+        <div class="logo">
+          <%= link_to partner.url do %>
+            <%= image_tag partner.logo %>
+          <% end %>
+        </div>
+        <div class="description">
+          <%== partner.description_html %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

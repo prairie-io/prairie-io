@@ -8,10 +8,11 @@
   <nav class="hidden">
     <ul>
       <li class="link home"><%= active_link_to "Home", root_path, active: :exclusive %></li>
+      <li class="link"><%= active_link_to "About", about_path %></li>
       <% unless Event.count == 0 %>
         <li class="link"><%= active_link_to "Events", activities_path %></li>
       <% end %>
-      <li class="link"><%= active_link_to "Sponsors", sponsors_path %></li>
+      <li class="link"><%= active_link_to "Partners", partners_path %></li>
       <% if current_user %>
         <li class="link">
           <%= active_link_to "Account", edit_user_path(current_user) %>

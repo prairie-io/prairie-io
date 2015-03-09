@@ -30,21 +30,33 @@ body.home-layout.home.index main {
 
       &#what-we-do {
         text-align: center;
+
+        a {
+          color: $dark-yellow;
+          text-decoration: none;
+
+          &:hover {
+            color: $base-font-color;
+          }
+        }
       }
 
       p.join {
         text-align: center;
       }
 
-      &#members {
-        .row {
-          margin-top: -5px;
-        }
+      &#we-are {
+        ul {
+          @include outer-container;
 
-        .member {
-          display: inline-block;
-          margin-right: -5px;
-          width: 10%;
+          list-style: none;
+          padding: 0;
+
+          li {
+            @include span-columns(1 of 3);
+
+            text-align: center;
+          }
         }
       }
     }

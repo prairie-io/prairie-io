@@ -9,11 +9,11 @@ Prairie::Application.routes.draw do
   match "/", to: "home#index", via: [:post, :get]
   root to: "home#index"
 
-  %w(sponsors).each do |page|
+  %w(about).each do |page|
     get page, to: "home##{page}", as: page
   end
 
-  resources :activities
+  resources :activities, :partners
 
   resources :subscriptions do
     collection do

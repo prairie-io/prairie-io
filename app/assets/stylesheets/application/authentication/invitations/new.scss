@@ -1,0 +1,105 @@
+@import "imports";
+
+body.application-layout.invitations.new,
+body.application-layout.invitations.create {
+  @include outer-container;
+
+  section#invitation {
+    @include span-columns(12);
+    @include omega;
+
+    .window {
+      @include span-columns(6);
+      @include shift(3);
+      @include omega;
+
+      background-color: #eee;
+      border-radius: 4px;
+      box-shadow: 1px 1px 2px #ccc;
+
+      .navigation {
+        @include clearfix;
+
+        text-align: center;
+      }
+
+      .window-buttons {
+        margin: 0;
+
+        @include span-columns(4);
+
+        list-style-type: none;
+        padding: 10px;
+
+        li {
+          background-color: #fff;
+          border: 1px solid darken(#fff, 5%);
+          border-radius: 5px;
+          display: block;
+          float: left;
+          height: 10px;
+          margin-right: 5px;
+          width: 10px;
+        }
+
+        li:nth-of-type(1) {
+          background-color: #fc635d;
+          border-color: darken(#fc635d, 5%);
+
+          &:hover {
+            border: 1px solid darken(#fc635d, 25%);
+          }
+        }
+
+        li:nth-of-type(2) {
+          background-color: #fdbe41;
+          border-color: darken(#fdbe41, 5%);
+
+          &:hover {
+            border: 1px solid darken(#fdbe41, 18%);
+          }
+        }
+
+        li:nth-of-type(3) {
+          background-color: #35cd4b;
+          border-color: darken(#35cd4b, 5%);
+
+          &:hover {
+            border: 1px solid darken(#35cd4b, 15%);
+          }
+        }
+      }
+
+      .title {
+        @include span-columns(4);
+      }
+
+      .actions {
+        @include span-columns(4);
+        @include omega;
+
+        button[type=submit] {
+          background-color: $white;
+          float: right;
+        }
+      }
+
+
+      .page {
+        background-color: $white;
+        display: block;
+        margin: 0 auto;
+        padding: 10px;
+        width: 99%;
+      }
+
+      .page + hr {
+        margin: 0;
+      }
+
+      hr {
+        margin: 14px 0 0;
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@
   <div class="events">
     <% unless @organizer.events.published.count == 0 %>
       <ul>
-        <% @organizer.events.each do |event| %>
+        <% @organizer.events.published.each do |event| %>
           <li>
             <h6>
               <%= link_to event do %>

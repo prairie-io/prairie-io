@@ -3,22 +3,16 @@ class Event < ActiveRecord::Base
   after_create :create_on_eventbrite
   after_validation :geocode, :set_time_zone
 
-  has_attached_file :logo, styles: {
-    medium: "",
-    thumb: ""
-  },
-  convert_options: {
-    medium: "-gravity north -thumbnail 600x600^ -extent 600x600",
-    thumb:  "-gravity north -thumbnail 200x200^ -extent 200x200"
-  }, default_url: "/images/:style/missing.png"
-  validates_attachment :logo, presence: true, content_type: { content_type: /\Aimage\/.*\Z/ }
-
   # Scopes
-  scope :approved,        -> { where(is_approved: true) }
   scope :chronological,   -> { order(:starts_at) }
-  scope :published,       -> { approved.chronological }
+  scope :published,       -> { chronological }
 
   # Relationships
+  belongs_to :organizer
+  delegate :name, to: :organizer
+  delegate :description, to: :organizer
+  delegate :logo, to: :organizer
+
   has_many :tickets
   has_many :users, through: :tickets
 

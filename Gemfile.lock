@@ -15,6 +15,14 @@ GIT
       coffee-rails
 
 GIT
+  remote: git://github.com/jordanhudgens/eventbrite-client.rb.git
+  revision: 86f758430af6cc29890be67212713b5f84c91835
+  specs:
+    eventbrite-client (0.1.3)
+      httparty (~> 0.13.3)
+      tzinfo (~> 1.2.2)
+
+GIT
   remote: https://github.com/getsentry/raven-ruby.git
   revision: e87590fbdfc53a90eca1e56804c546aee99918b2
   specs:
@@ -408,6 +416,7 @@ DEPENDENCIES
   email_validator
   ember-rails
   ember-source
+  eventbrite-client!
   factory_girl_rails
   faker
   font-awesome-rails

@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   geocoded_by :full_street_address
+  after_create :create_on_eventbrite
   after_validation :geocode, :set_time_zone
 
   has_attached_file :logo, styles: {
@@ -84,6 +85,47 @@ class Event < ActiveRecord::Base
   end
 
 private
+
+  def create_on_eventbrite
+    return if !self.is_attendable && self.eventbrite_id
+
+    venue = Eventbrite.venue_new(
+      organizer_id: ENV["EVENTBRITE_ORGANIZER_ID"],
+      name: self.location_description,
+      address: self.address1,
+      address_2: self.address2,
+      city: self.city,
+      region: self.state,
+      postal_code: self.zipcode,
+      country_code: "US"
+    )
+
+    event = Eventbrite.event_new(
+      background_color: "FFFFFF",
+      text_color: "545454",
+      link_color: "EACE02",
+      title_text_color: "545454",
+      box_background_color: "FFFFFF",
+      box_text_color: "545454",
+      box_border_color: "D6D6D6",
+      box_header_background_color: "F6F6F6",
+      box_header_text_color: "707070",
+      title: self.name,
+      description: self.description_html,
+      start_date: self.starts_at.strftime("%Y-%m-%d %H:%M:%S"),
+      end_date: self.ends_at.strftime("%Y-%m-%d %H:%M:%S"),
+      timezone: self.time_zone,
+      privacy: 1,
+      venue_id: venue["process"]["id"],
+      organizer_id: ENV["EVENTBRITE_ORGANIZER_ID"],
+      capacity: 50,
+      currency: "USD",
+      locale: "en_US",
+      status: Rails.env.production? ? "live" : "draft"
+    )
+
+    self.update(eventbrite_id: event["process"]["id"])
+  end
 
   def set_time_zone
     return unless self.latitude && self.longitude

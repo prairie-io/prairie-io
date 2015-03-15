@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309001151) do
+ActiveRecord::Schema.define(version: 20150315205616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150309001151) do
     t.string   "youtube_video_id"
     t.boolean  "is_attendable",        default: false
     t.string   "twitter_handle"
+    t.string   "eventbrite_id"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|

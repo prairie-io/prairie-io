@@ -1,6 +1,8 @@
 <footer>
-  <div class="branding">
-    <h6><%= mail_to ENV["DEVISE_EMAIL_FROM"], site_title %> &copy; <%= Date.today.year %></h6>
+  <div class="container">
+    <div class="branding">
+      <h6><%= mail_to ENV["DEVISE_EMAIL_FROM"], site_title %> &copy; <%= Date.today.year %></h6>
+    </div>
+    <%= render partial: "layouts/shared/socials" %>
   </div>
-  <%= render partial: "layouts/shared/socials" %>
 </footer>

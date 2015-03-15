@@ -12,9 +12,16 @@
   <% end %>
 <% end %>
 
-<h2>Invite a Nerd</h2>
+<div class="page-header">
+  <h1>Invite a Nerd</h1>
+  <p>
+    At our core we are a community. We are always looking for more to join and would love for you to help spread the word! Fill in the address of someone you think would be interested.
+  </p>
+</div>
 
 <section id="invitation">
+  <div class="backgrounder"></div>
+
   <div class="window">
     <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
       <div class="navigation">
@@ -30,40 +37,43 @@
           <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
         </div>
       </div>
-      <hr>
       <div class="page">
         <div class="send-header">
           <p>
-            <strong>To:</strong> <%= f.text_field :email, placeholder: "nerd@prairie.io" %>
+            <strong>To:</strong> <%= f.text_field :email, placeholder: "nerd@prairie.io", autofocus: true %>
           </p>
 
           <p>
-            <strong>Subject: </strong>
-          </p>
-
-          <p>
-            <strong>From:</strong>
+            <strong>Subject:</strong> You've been invited to join Prairie I/O
           </p>
         </div>
 
         <div class="message-body">
+          <div class="header">
+            <%= image_tag "prairie-io-logo.png" %>
+          </div>
+
           <p>
             Hey friend,
           </p>
 
           <p class="intro">
-            You're invited to join us in building Silicon Prairie!
+            <% if current_user && !current_user.name.blank? %>
+              <strong><%= current_user.name %></strong> has invited you to join us in building Silicon Prairie!
+            <% else %>
+              You're invited to join us in building Silicon Prairie!
+            <% end %>
           </p>
-
-          <div class="actions">
-            <%= link_to "Join the herd", accept_invitation_url(@user, :invitation_token => @token), class: "button" %>
-          </div>
 
           <p class="signature">
             Thanks,<br>
             The Nerd Herd
           </p>
         </div>
+      </div>
+
+      <div class="send-invitation">
+        <button type="submit" default>Send</button>
       </div>
     <% end %>
   </div>

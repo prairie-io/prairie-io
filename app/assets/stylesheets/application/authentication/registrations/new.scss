@@ -7,6 +7,37 @@ body.application-layout.registrations.new {
 
     padding: 0 25px;
 
+    .page-header {
+      @include span-columns(12);
+      @include omega;
+
+      margin-bottom: 25px;
+
+      h1 {
+        @include span-columns(4);
+        @include shift(4);
+        @include omega;
+
+        @include media($mobile) {
+          @include span-columns(4);
+          @include shift(0);
+        }
+
+        border-bottom: 1px $light-grey solid;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      p {
+        @include span-columns(12);
+        @include omega;
+
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+
     section#registration {
       @include outer-container;
       @include span-columns(6);

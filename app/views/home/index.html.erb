@@ -37,7 +37,7 @@
           We have <strong><%= Partner.count %></strong> <%= "partner".pluralize(Partner.count) %>.
         </p>
         <p>
-          <%= link_to "Become a partner", "", class: :button %>
+          <%= render partial: "layouts/shared/become_a_partner" %>
         </p>
       </li>
     </ul>

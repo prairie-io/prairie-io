@@ -1,30 +1,32 @@
 <header>
-  <div class="logo">
-    <%= link_to image_tag("prairie-io-logo.png", alt: "Prairie I/O Logo"), root_path %>
-  </div>
-  <div class="hamburger">
-    <i class="fa fa-bars"></i>
-  </div>
-  <nav class="hidden">
-    <ul>
-      <li class="link home"><%= active_link_to "Home", root_path, active: :exclusive %></li>
-      <li class="link"><%= active_link_to "About", about_path %></li>
-      <% unless Event.count == 0 %>
-        <li class="link"><%= active_link_to "Events", activities_path %></li>
-      <% end %>
-      <li class="link"><%= active_link_to "Partners", partners_path %></li>
-      <% if current_user %>
-        <li class="link">
-          <%= active_link_to "Account", edit_user_path(current_user) %>
-        </li>
+  <div class="container">
+    <div class="logo">
+      <%= link_to image_tag("prairie-io-logo.png", alt: "Prairie I/O Logo"), root_path %>
+    </div>
+    <div class="hamburger">
+      <i class="fa fa-bars"></i>
+    </div>
+    <nav class="hidden">
+      <ul>
+        <li class="link home"><%= active_link_to "Home", root_path, active: :exclusive %></li>
+        <li class="link"><%= active_link_to "About", about_path %></li>
+        <% unless Event.count == 0 %>
+          <li class="link"><%= active_link_to "Events", activities_path %></li>
+        <% end %>
+        <li class="link"><%= active_link_to "Partners", partners_path %></li>
+        <% if current_user %>
+          <li class="link">
+            <%= active_link_to "Account", edit_user_path(current_user) %>
+          </li>
 
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button" %></li>
-      <% else %>
-        <li class="link"><%= active_link_to "Login", new_user_session_path %></li>
-        <li><%= render partial: "layouts/shared/join_button" %></li>
-      <% end %>
-    </ul>
-  </nav>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button" %></li>
+        <% else %>
+          <li class="link"><%= active_link_to "Login", new_user_session_path %></li>
+          <li><%= render partial: "layouts/shared/join_button" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <% content_for :scripts do %>

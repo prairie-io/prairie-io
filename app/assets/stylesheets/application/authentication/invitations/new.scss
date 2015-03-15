@@ -1,21 +1,76 @@
 @import "imports";
 
-body.application-layout.invitations.new,
-body.application-layout.invitations.create {
+body.application-layout.invitations.new main,
+body.application-layout.invitations.create main {
   @include outer-container;
+
+  padding: 0 25px;
+
+  .page-header {
+    @include span-columns(12);
+    @include omega;
+
+    margin-bottom: 25px;
+
+    h1 {
+      @include span-columns(4);
+      @include shift(4);
+      @include omega;
+
+      @include media($mobile) {
+        @include span-columns(4);
+        @include shift(0);
+      }
+
+      border-bottom: 1px $light-grey solid;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      @include span-columns(12);
+      @include omega;
+
+      margin-top: 0;
+      text-align: center;
+    }
+  }
 
   section#invitation {
     @include span-columns(12);
     @include omega;
 
-    .window {
-      @include span-columns(6);
-      @include shift(3);
+    .backgrounder {
+      @include span-columns(12);
       @include omega;
+
+      background-image: image-url("home/discussion.jpg");
+      background-size: cover;
+      left: 0;
+      min-height: 500px;
+      opacity: 0.25;
+      margin-top: 125px;
+      position: absolute;
+      right: 0;
+      width: 100%;
+      z-index: -10;
+    }
+
+    .window {
+      @include span-columns(8);
+      @include shift(2);
+      @include omega;
+
+      @include media($mobile) {
+        @include span-columns(4);
+        @include shift(0);
+      }
 
       background-color: #eee;
       border-radius: 4px;
-      box-shadow: 1px 1px 2px #ccc;
+      box-shadow: 1px 1px 2px lighten($grey, 25%);
+      margin-bottom: 50px;
 
       .navigation {
         @include clearfix;
@@ -28,6 +83,7 @@ body.application-layout.invitations.create {
 
         @include span-columns(4);
 
+        height: 31px;
         list-style-type: none;
         padding: 10px;
 
@@ -72,33 +128,127 @@ body.application-layout.invitations.create {
 
       .title {
         @include span-columns(4);
+
+        font-size: .75em;
+        height: 31px;
+        padding-top: 5px;
       }
 
       .actions {
         @include span-columns(4);
         @include omega;
 
+        height: 31px;
+
         button[type=submit] {
           background-color: $white;
+          border-bottom: 1px solid $light-grey;
+          color: $grey;
           float: right;
+          height: 22px;
+          margin-right: 4px;
+          margin-top: 4px;
+          padding-bottom: 3px;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 3px;
+
+          &:hover {
+            background-color: lighten($light-grey, 15%);
+            border-bottom: 1px solid $grey;
+            color: $black;
+          }
+
+          &:active {
+            background-color: lighten($light-grey, 15%);
+            border-bottom-width: 0;
+            color: $black;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            height: 21px;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-top: 4px;
+            margin-right: 4px;
+            top: 1px;
+          }
         }
       }
 
+      .send-invitation {
+        height: 31px;
+        padding-bottom: 5px;
+        text-align: center;
+        width: 100%;
+
+        button[type=submit] {
+          background-color: $white;
+          border-bottom: 1px solid $light-grey;
+          color: $grey;
+          height: 22px;
+          padding-bottom: 3px;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 3px;
+
+          &:hover {
+            background-color: lighten($light-grey, 15%);
+            border-bottom: 1px solid $grey;
+            color: $black;
+          }
+
+          &:active {
+            background-color: lighten($light-grey, 15%);
+            border-bottom-width: 0;
+            color: $black;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            height: 21px;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-bottom: 0;
+            top: 1px;
+          }
+        }
+      }
 
       .page {
         background-color: $white;
         display: block;
         margin: 0 auto;
+        margin-bottom: 2px;
         padding: 10px;
         width: 99%;
-      }
 
-      .page + hr {
-        margin: 0;
-      }
+        .send-header {
+          margin-top: -5px;
 
-      hr {
-        margin: 14px 0 0;
+          p {
+            border-bottom: 1px solid lighten($light-grey, 10%);
+            margin: 0 0 5px 0;
+          }
+
+          input {
+            border: 0;
+            padding: 0;
+            width: 75%;
+          }
+        }
+
+        .message-body {
+          padding: 0 15px;
+
+          .header {
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20px;
+            width: 30%;
+          }
+
+          p.signature {
+            display: block;
+          }
+        }
       }
     }
   }

@@ -1,11 +1,20 @@
 @import "imports";
 
 body.home-layout.activities.index main {
+  @include outer-container;
+
   .actions {
+    @include span-columns(12);
+    @include omega;
+
     text-align: center;
   }
 
+  @include page_header;
+
   section.container {
+    @include span-columns(12);
+    @include omega;
     @include outer-container;
 
     padding: 25px;

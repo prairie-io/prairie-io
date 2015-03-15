@@ -4,24 +4,12 @@ body.home-layout.partners.index main {
   @include outer-container;
   padding: 0 25px;
 
-  h1 {
-    @include span-columns(6);
-    @include shift(3);
-    @include omega;
-
-    @include media($mobile) {
-      @include span-columns(4);
-      @include shift(0);
-    }
-
-    border-bottom: 1px $light-grey solid;
-    padding-bottom: 15px;
-    text-align: center;
-  }
+  @include page_header;
 
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 
     li {
       @include span-columns(12);

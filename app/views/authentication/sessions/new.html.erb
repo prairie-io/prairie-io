@@ -12,6 +12,13 @@
   <% end %>
 <% end %>
 
+<div class="page-header">
+  <h1>Login</h1>
+  <p>
+    We want you to join us in building the prairie of tomorrow!
+  </p>
+</div>
+
 <section id="login">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div>
@@ -34,4 +41,3 @@
   <p>Not a member? We'd love your help building Silicon Prairie!</p>
   <%= render partial: "layouts/shared/join_button" %>
 </section>
-

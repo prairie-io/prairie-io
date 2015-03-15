@@ -1,6 +1,13 @@
 <% future_activities = @activities.map{|a| a.date >= Time.now ? a : nil}.compact.reverse %>
 <% past_activities = @activities.map{|a| a.date < Time.now ? a : nil}.compact %>
 
+<div class="header">
+  <h1>Our Timeline</h1>
+  <p>
+    Checkout our past, present, and future below. Click on an event for details and to register.
+  </p>
+</div>
+
 <% if current_user && current_user.is_admin %>
   <div class="actions">
     <%= link_to "New Event", new_event_path, class: :button %>

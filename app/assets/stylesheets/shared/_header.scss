@@ -2,123 +2,128 @@
 
 body.application-layout header,
 body.home-layout header {
-  @include outer-container;
+  background-color: white;
+  width: 100%;
 
-  padding: 0 25px;
+  .container {
+    @include outer-container;
 
-  @include media($mobile) {
-    padding: 0;
-  }
-
-  .logo {
-    @include span-columns(3);
+    padding: 0 25px;
 
     @include media($mobile) {
+      padding: 0;
+    }
+
+    .logo {
       @include span-columns(3);
 
-      padding-left: 25px;
-    }
+      @include media($mobile) {
+        @include span-columns(3);
 
-    max-height: 67px;
-    padding: 5px 0;
+        padding-left: 25px;
+      }
 
-    img {
-      max-height: 57px;
-    }
-  }
+      max-height: 67px;
+      padding: 5px 0;
 
-  .hamburger {
-    display: none;
-
-    @include media($mobile) {
-      @include span-columns(1);
-      @include omega;
-
-      color: $black;
-      display: block;
-      font-size: 32px;
-      margin-top: 10px;
-      padding-right: 25px;
-      text-align: right;
-    }
-  }
-
-  nav {
-    @include span-columns(9);
-
-    @include media($mobile) {
-      @include span-columns(4);
-      @include omega;
-
-      background-color: $yellow;
-    }
-
-    max-height: 67px;
-    text-align: right;
-
-    @include media($mobile) {
-      max-height: none;
-
-      &.hidden {
-        display: none;
+      img {
+        max-height: 57px;
       }
     }
 
-    ul {
-      margin: 14px 0 14px 0;
+    .hamburger {
+      display: none;
+
+      @include media($mobile) {
+        @include span-columns(1);
+        @include omega;
+
+        color: $black;
+        display: block;
+        font-size: 32px;
+        margin-top: 10px;
+        padding-right: 25px;
+        text-align: right;
+      }
+    }
+
+    nav {
+      @include span-columns(9);
+
+      @include media($mobile) {
+        @include span-columns(4);
+        @include omega;
+
+        background-color: $yellow;
+      }
+
+      max-height: 67px;
       text-align: right;
 
       @include media($mobile) {
-        background-color: $yellow;
-        box-shadow: inset 0px 1px 5px rgba($black, 0.4);
-        margin: 0;
-        padding-left: 0;
-        text-align: center;
+        max-height: none;
+
+        &.hidden {
+          display: none;
+        }
       }
 
-      li {
-        display: inline;
-        margin-right: 28px;
+      ul {
+        margin: 14px 0 14px 0;
+        text-align: right;
 
         @include media($mobile) {
-          display: block;
-          margin-right: 0;
-          padding: 14px;
+          background-color: $yellow;
+          box-shadow: inset 0px 1px 5px rgba($black, 0.4);
+          margin: 0;
+          padding-left: 0;
+          text-align: center;
         }
 
-        &:last-child {
-          @include media($mobile) {
-            display: none;
-          }
-
-          margin-right: 0;
-        }
-
-        &.link {
-          position: relative;
-          top: 3px;
+        li {
+          display: inline;
+          margin-right: 28px;
 
           @include media($mobile) {
-            top: 0;
+            display: block;
+            margin-right: 0;
+            padding: 14px;
           }
 
-          a:hover,
-          a.active {
-            border-bottom: 2px $black solid;
-          }
-        }
-
-        a {
-          color: $header-font-color;
-          font-family: $header-font-family;
-          font-size: 14px;
-          font-weight: $header-font-weight;
-          text-decoration: none;
-          text-transform: uppercase;
-
-          @include media($mobile) {
-            &.button {
+          &:last-child {
+            @include media($mobile) {
               display: none;
+            }
+
+            margin-right: 0;
+          }
+
+          &.link {
+            position: relative;
+            top: 3px;
+
+            @include media($mobile) {
+              top: 0;
+            }
+
+            a:hover,
+            a.active {
+              border-bottom: 2px $black solid;
+            }
+          }
+
+          a {
+            color: $header-font-color;
+            font-family: $header-font-family;
+            font-size: 14px;
+            font-weight: $header-font-weight;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            @include media($mobile) {
+              &.button {
+                display: none;
+              }
             }
           }
         }

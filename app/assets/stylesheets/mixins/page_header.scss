@@ -1,0 +1,29 @@
+@mixin page_header($columns: 4) {
+  .header {
+    @include span-columns(12);
+    @include omega;
+
+    h1 {
+      @include span-columns($columns);
+      @include shift((12 - $columns)/2);
+      @include omega;
+
+      @include media($mobile) {
+        @include span-columns(4);
+        @include shift(0);
+      }
+
+      border-bottom: 1px $light-grey solid;
+      padding-bottom: 15px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    p {
+      @include span-columns(12);
+      @include omega;
+
+      text-align: center;
+    }
+  }
+}

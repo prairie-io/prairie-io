@@ -1,10 +1,10 @@
-<h1>Our Story</h1>
+<div class="header">
+  <h1>Our Story</h1>
 
-<section class="story">
   <p>
     We exist to help build the community that we want to be part of. We want the most interconnected talent, brightest minds, innovative solutions, and open community in the nation. Our focus is high-tech fields like software, hardware, and robotics.
   </p>
-</section>
+</div>
 
 <section class="values">
   <h2>Our Values</h2>
@@ -46,6 +46,8 @@
   </ul>
 </section>
 
+<%= render partial: "layouts/shared/seperator" %>
+
 <section class="roadmap">
   <h2>Our Roadmap</h2>
   <p class="description">
@@ -55,9 +57,9 @@
   <ul class="stages">
     <li class="stage">
       <h3>
-        Growth<br>
-        <small>Stage 1</small>
+        Growth
       </h3>
+      <h6>Stage 1</h6>
       <p>
         Build a strong community that is charged and shares a common vision for the future.
       </p>
@@ -70,9 +72,9 @@
     </li>
     <li class="stage active">
       <h3>
-        Improvement<br>
-        <small>Stage 2</small>
+        Improvement
       </h3>
+      <h6>Stage 2</h6>
       <p>
         Supplement and encourage growth in underdeveloped areas.
       </p>
@@ -82,12 +84,28 @@
         <li>Organize hackathons and conferences.</li>
         <li>Challenge the community to reach new heights.</li>
       </ul>
+
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+      <h6>25% Progress to next stage</h6>
+
+      <ul class="tasks">
+        <li><i class="fa fa-square-o"></i> Host 5 conferences <small>0/5</small></li>
+        <li><i class="fa fa-square-o"></i> Engage 10 Partners <small><%= Partner.count %>/10</small></li>
+        <li><i class="fa fa-square-o"></i> Sponsor 50 Events <small><%= Event.count %>/50</small></li>
+        <li><i class="fa fa-square-o"></i> Reach 250 Members <small><%= User.count %>/250</small></li>
+      </ul>
+
+      <p class="actions">
+        <%= render partial: "layouts/shared/become_a_partner" %>
+      </p>
     </li>
     <li class="stage">
       <h3>
-        Education<br>
-        <small>Stage 3</small>
+        Education
       </h3>
+      <h6>Stage 3</h6>
       <p>
         Maintain the momentum over the long term through education.
       </p>

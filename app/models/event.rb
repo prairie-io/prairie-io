@@ -9,6 +9,9 @@ class Event < ActiveRecord::Base
 
   # Relationships
   belongs_to :organizer
+  delegate :name, to: :organizer
+  delegate :description, to: :organizer
+  delegate :logo, to: :organizer
 
   has_many :tickets
   has_many :users, through: :tickets

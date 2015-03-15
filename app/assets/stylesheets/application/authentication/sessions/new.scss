@@ -46,7 +46,6 @@ body.application-layout.sessions.new main {
 
     border-right: 1px lighten($light-grey, 10%) solid;
     margin-bottom: 50px;
-    margin-top: 50px;
 
     @include media($mobile) {
       border-right: none;
@@ -80,7 +79,6 @@ body.application-layout.sessions.new main {
     }
 
     margin-bottom: 50px;
-    margin-top: 50px;
     text-align: center;
   }
 }

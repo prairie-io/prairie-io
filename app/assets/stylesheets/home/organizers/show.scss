@@ -49,6 +49,15 @@ body.home-layout.organizers.show main {
 
           .event-description {
             margin-bottom: 15px;
+            
+            a {
+              color: $dark-yellow;
+              text-decoration: none;
+
+              &:hover {
+                color: $base-font-color;
+              }
+            }
           }
 
           .video {

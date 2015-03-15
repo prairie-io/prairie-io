@@ -1,4 +1,4 @@
-class CreatePartners < ActiveRecord::Migration
+class CreateSponsors < ActiveRecord::Migration
   def change
     create_table :partners do |t|
       t.string :name, null: false

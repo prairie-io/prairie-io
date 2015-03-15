@@ -1,0 +1,41 @@
+<% unless @organizer.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(@organizer.errors.count, "error") %> prohibited the form from being submitted:</h2>
+    <ul>
+      <% @organizer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="event">
+  <%= form_for @organizer do |f| %>
+    <div id="logo"  class="field">
+      <% if @organizer.logo.file? %>
+        <div class="logo-preview">
+          <%= image_tag @organizer.logo.url(:thumb) %>
+        </div>
+      <% else %>
+        <%= f.label :logo, "Logo" %>
+      <% end %>
+
+      <%= f.file_field :logo %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name, placeholder: "Interface Fargo" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description, "Summary" %>
+      <%= f.text_field :description, placeholder: "Brilliant people talking about unique solutions to hard tech problems." %>
+    </div>
+
+    <div class="submit field">
+      <%= f.submit "Create" %>
+    </div>
+  <% end %>
+</div>

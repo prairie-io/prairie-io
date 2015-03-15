@@ -12,28 +12,6 @@
 
 <div class="event">
   <%= form_for @event do |f| %>
-    <div id="logo"  class="field">
-      <% if @event.logo.file? %>
-        <div class="logo-preview">
-          <%= image_tag @event.logo.url(:thumb) %>
-        </div>
-      <% else %>
-        <%= f.label :logo, "Logo" %>
-      <% end %>
-
-      <%= f.file_field :logo %>
-    </div>
-
-    <div class="field">
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name, placeholder: "Interface Fargo" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :description, "Summary" %>
-      <%= f.text_field :description, placeholder: "Brilliant people talking about unique solutions to hard tech problems." %>
-    </div>
-
     <div class="field">
       <%= f.label :description_html, "Long Description" %>
       <%= f.text_area :description_html, placeholder: "<p>Hi</p>" %>

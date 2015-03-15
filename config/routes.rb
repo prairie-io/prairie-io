@@ -13,7 +13,7 @@ Prairie::Application.routes.draw do
     get page, to: "home##{page}", as: page
   end
 
-  resources :activities, :partners
+  resources :activities, :organizers, :partners
 
   resources :subscriptions do
     collection do

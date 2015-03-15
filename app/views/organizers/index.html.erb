@@ -5,6 +5,12 @@
   </p>
 </div>
 
+<% if current_user && current_user.is_admin %>
+  <div class="actions">
+    <%= link_to "New Organizer", new_organizer_path, class: :button %>
+  </div>
+<% end %>
+
 <% if @organizers.count > 0 %>
   <ul>
     <% @organizers.each do |organizer| %>

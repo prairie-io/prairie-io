@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315221628) do
+ActiveRecord::Schema.define(version: 20150315222532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,13 +91,13 @@ ActiveRecord::Schema.define(version: 20150315221628) do
   create_table "organizers", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "buffer_key"
+    t.string   "buffer_access_token"
   end
 
   create_table "partners", force: :cascade do |t|

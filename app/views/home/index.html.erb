@@ -7,7 +7,7 @@
 <div id="content">
   <section id="what-we-do">
     <p>We <strong>challenge</strong> what's possible in technology.</p>
-    <p>We <strong>plan</strong> regular meet-ups like Interface Fargo.</p>
+    <p>We <strong>plan</strong> regular meet-ups like <%= link_to "Interface Fargo", Organizer.where(name: "Interface Fargo").first_or_create, target: "_blank" %>.</p>
     <p>We <strong>educate</strong> to strengthen our community.</p>
     <p>We <strong>grow</strong> a strong social network of nerds.</p>
   </section>

@@ -1,0 +1,58 @@
+@import "imports";
+
+body.home-layout.organizers.index main {
+  @include outer-container;
+  padding: 0 25px;
+
+  @include page_header;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      @include span-columns(12);
+      @include outer-container;
+      @include omega;
+
+      margin-bottom: 15px;
+
+      .logo {
+        @include span-columns(2);
+
+        @include media($mobile) {
+          @include span-columns(2);
+          @include shift(1);
+          @include omega;
+        }
+
+        img {
+          border-radius: 6px;
+        }
+      }
+
+      .description {
+        @include span-columns(10);
+        @include omega;
+
+        @include media($mobile) {
+          @include span-columns(4);
+        }
+
+        p {
+          margin-top: 0;
+        }
+
+        a {
+          color: $dark-yellow;
+          text-decoration: none;
+
+          &:hover {
+            color: $base-font-color;
+          }
+        }
+      }
+    }
+  }
+}

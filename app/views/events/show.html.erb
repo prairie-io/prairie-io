@@ -3,8 +3,11 @@
 
   <section id="content">
 
-    <%= image_tag @event.logo(:medium), class: "logo" %>
-    <h1 class="title"><%= @event.name %></h1>
+    <%= link_to @event.organizer, target: "_blank" do %>
+      <%= image_tag @event.logo(:medium), class: "logo" %>
+      <h1 class="title"><%= @event.name %></h1>
+    <% end %>
+
     <small><%= local_time @event.localized_starts_at, "%m/%d/%y" %><%= " - " if @event.ends_at && @event.ends_at.to_date > @event.starts_at.to_date %><%= local_time @event.localized_ends_at, "%m/%d/%y" if @event.ends_at && @event.ends_at.to_date > @event.starts_at.to_date %> <%= local_time @event.localized_starts_at, "%l:%M%P" %><%= " - " if @event.ends_at %><%= local_time(@event.localized_ends_at, "%l:%M%P") if @event.ends_at %></small>
 
     <div class="description">

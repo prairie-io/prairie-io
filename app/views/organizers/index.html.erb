@@ -1,0 +1,23 @@
+<div class="header">
+  <h1>Our Organizers</h1>
+  <p>
+    These are the groups that are sponsored and a main focus for Prairie I/O. They're doing awesome stuff and we're here to help.
+  </p>
+</div>
+
+<% if @organizers.count > 0 %>
+  <ul>
+    <% @organizers.each do |organizer| %>
+      <li>
+        <div class="logo">
+          <%= link_to organizer do %>
+            <%= image_tag organizer.logo %>
+          <% end %>
+        </div>
+        <div class="description">
+          <%== organizer.description %> <%= link_to "Attend an #{organizer.name} event!", organizer.events.published.first %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

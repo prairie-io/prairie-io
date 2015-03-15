@@ -16,6 +16,10 @@ class OrganizersController < ApplicationController
     end
   end
 
+  def index
+    @organizers = Organizer.all
+  end
+
   def new
     @title = "New Organizer"
     @organizer = Organizer.new
@@ -25,13 +29,13 @@ class OrganizersController < ApplicationController
     end
   end
 
-  # GET /events
   def show
     @organizer = Organizer.find(params[:id])
+
+    redirect_to @organizer.site_url if @organizer.site_url
+
     @title = @organizer.name
     @description = @organizer.description
-
-    respond_with @event
   end
 
 private

@@ -1,0 +1,35 @@
+<div class="organizer">
+  <div class="logo">
+    <%= image_tag @organizer.logo(:medium), class: "logo" %>
+  </div>
+
+  <h1 class="title"><%= @organizer.name %></h1>
+
+  <div class="description">
+    <%== @organizer.description %>
+  </div>
+
+  <div class="events">
+    <% unless @organizer.events.published.count == 0 %>
+      <ul>
+        <% @organizer.events.each do |event| %>
+          <li>
+            <h6>
+              <%= link_to event do %>
+                <%= local_time event.starts_at, "%m/%d/%y" %>
+              <% end %>
+            </h6>
+            <div class="event-description">
+              <%== event.description_html %>
+            </div>
+            <% unless event.youtube_video_id.blank? %>
+              <div class="video">
+                <%== youtube_video(event.youtube_video_id) %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

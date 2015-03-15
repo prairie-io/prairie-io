@@ -13,7 +13,12 @@
         <% unless Event.count == 0 %>
           <li class="link"><%= active_link_to "Events", activities_path %></li>
         <% end %>
-        <li class="link"><%= active_link_to "Partners", partners_path %></li>
+        <% unless Organizer.count == 0 %>
+          <li class="link"><%= active_link_to "Organizers", organizers_path %></li>
+        <% end %>
+        <% unless Partner.count == 0 %>
+          <li class="link"><%= active_link_to "Partners", partners_path %></li>
+        <% end %>
         <% if current_user %>
           <li class="link">
             <%= active_link_to "Account", edit_user_path(current_user) %>

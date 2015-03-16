@@ -44,6 +44,7 @@ private
       :description,
       :description_html,
       :ends_at,
+      :is_attendable,
       :location_description,
       :logo,
       :name,

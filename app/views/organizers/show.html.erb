@@ -1,7 +1,7 @@
 <div class="organizer">
   <div class="logo">
     <%= image_tag @organizer.logo(:medium), class: "logo" %>
-  </div>
+  </div><br>
 
   <h1 class="title"><%= @organizer.name %></h1>
 
@@ -18,7 +18,7 @@
               <%= link_to event do %>
                 <%= local_time event.starts_at, "%m/%d/%y" %>
               <% end %>
-            </h6><br>
+            </h6>
             <div class="event-description">
               <%== event.description_html %>
             </div>

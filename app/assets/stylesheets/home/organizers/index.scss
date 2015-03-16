@@ -6,6 +6,11 @@ body.home-layout.organizers.index main {
 
   @include page_header;
 
+  .actions {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
   ul {
     list-style: none;
     margin: 0;

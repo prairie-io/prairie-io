@@ -41,7 +41,7 @@ class OrganizersController < ApplicationController
 private
 
   def organizer_params
-    params.require(:event).permit(
+    params.require(:organizer).permit(
       :description,
       :logo,
       :name

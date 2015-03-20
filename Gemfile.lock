@@ -193,6 +193,9 @@ GEM
     formatador (0.2.5)
     geocoder (1.2.7)
     gibberish (1.4.0)
+    gibbon (1.1.5)
+      httparty
+      multi_json (>= 1.9.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     google_timezone (0.0.4)
@@ -442,6 +445,7 @@ DEPENDENCIES
   foreman
   geocoder
   gibberish
+  gibbon
   google_timezone
   guard
   guard-rspec

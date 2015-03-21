@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   before_validation :set_hex
+  after_create :add_to_mailchimp
 
   # Devise Modules
   # - Also available: :lockable, and :timeoutable
@@ -102,6 +103,22 @@ class User < ActiveRecord::Base
   end
 
 private
+
+  def add_to_mailchimp
+    if Rails.env.production?
+      Gibbon::API.subscribe({
+        id: ENV["MAILCHIMP_LIST_ID"],
+        email: {
+          email: self.email
+        },
+        merge_vars: {
+          FNAME: self.name ? self.name.split.first : "",
+          LNAME: self.name ? self.name.split.last : ""
+        },
+        double_optin: false
+      })
+    end
+  end
 
   def not_domain_email
     email_domain = self.email.split("@").last

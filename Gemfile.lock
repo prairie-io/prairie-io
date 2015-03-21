@@ -222,8 +222,6 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
-    intercom-rails (0.2.27)
-      activesupport (> 3.0)
     jbuilder (2.2.8)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -450,7 +448,6 @@ DEPENDENCIES
   guard
   guard-rspec
   highline
-  intercom-rails
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener_web

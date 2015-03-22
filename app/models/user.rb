@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   # Devise Modules
   # - Also available: :lockable, and :timeoutable
-  devise :async, :confirmable, :database_authenticatable, :invitable, :registerable,
+  devise :async, :database_authenticatable, :invitable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_attached_file :avatar, styles: {

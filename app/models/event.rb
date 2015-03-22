@@ -72,12 +72,6 @@ class Event < ActiveRecord::Base
     address
   end
 
-  def send_invitation_emails
-    User.subscribed.each do |user|
-      EventMailer.invitation(self.id, user.id).deliver
-    end
-  end
-
 private
 
   def create_on_eventbrite

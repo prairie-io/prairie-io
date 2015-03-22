@@ -9,16 +9,6 @@ module Authentication
     default from: "Prairie I/O <#{ENV["DEVISE_EMAIL_FROM"]}>"
     layout "email"
 
-    def confirmation_instructions(record, token, opts={})
-      @token = token
-      @user  = record
-
-      mail(
-        to:      @user.email,
-        subject: "Please confirm your account"
-      )
-    end
-
     def invitation_instructions(record, token, opts={})
       @token = token
       @user  = record

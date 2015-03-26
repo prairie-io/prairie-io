@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   before_validation :set_hex
-  after_create :add_to_mailchimp
+  after_save :add_to_mailchimp
 
   # Devise Modules
   # - Also available: :lockable, and :timeoutable
@@ -106,7 +106,7 @@ private
 
   def add_to_mailchimp
     if Rails.env.production?
-      Gibbon::API.subscribe({
+      Gibbon::API.lists.subscribe({
         id: ENV["MAILCHIMP_LIST_ID"],
         email: {
           email: self.email

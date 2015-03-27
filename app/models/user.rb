@@ -112,10 +112,9 @@ private
           email: self.email
         },
         merge_vars: {
-          AVATAR:    self.avatar(:thumb),
           FIRSTNAME: self.name ? self.name.split.first : "",
           LASTNAME:  self.name && self.name.split.length > 1 ? self.name.split.last : "",
-          IS_ADMIN:  self.is_admin,
+          IS_ADMIN:  self.is_admin.to_s,
           JOINED_ON: self.created_at
         },
         double_optin: false,

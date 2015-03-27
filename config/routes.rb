@@ -9,7 +9,7 @@ Prairie::Application.routes.draw do
   match "/", to: "home#index", via: [:post, :get]
   root to: "home#index"
 
-  match "webhooks#mailchimp", via: [:post, :get]
+  match "webhooks/mailchimp", to: "webhooks#mailchimp", via: [:post, :get]
 
   %w(about).each do |page|
     get page, to: "home##{page}", as: page

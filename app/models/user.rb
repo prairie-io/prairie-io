@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   before_validation :set_hex
-  after_save :add_to_mailchimp
+  after_save :add_to_mailchimp, if: :is_subscribed
+  after_save :remove_from_mailchimp, unless: :is_subscribed
+  before_destroy :remove_from_mailchimp
 
   # Devise Modules
   # - Also available: :lockable, and :timeoutable
@@ -117,8 +119,22 @@ private
           IS_ADMIN:  self.is_admin.to_s,
           JOINED_ON: self.created_at
         },
-        double_optin: false,
+        double_optin:    false,
         update_existing: true
+      })
+    end
+  end
+
+  def remove_from_mailchimp
+    if Rails.env.production?
+      Gibbon::API.lists.unsubscribe({
+        id: ENV["MAILCHIMP_LIST_ID"],
+        email: {
+          email: self.email
+        },
+        delete_member: true,
+        send_notify:   false,
+        send_goodbye:  false
       })
     end
   end

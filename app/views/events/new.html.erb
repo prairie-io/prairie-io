@@ -13,6 +13,11 @@
 <div class="event">
   <%= form_for @event do |f| %>
     <div class="field">
+      <%= f.label :organizer_id, "Organizer" %>
+      <%= f.select :organizer_id, options_from_collection_for_select(Organizer.all, :id, :name) %>
+    </div>
+
+    <div class="field">
       <%= f.label :description_html, "Long Description" %>
       <%= f.text_area :description_html, placeholder: "<p>Hi</p>" %>
     </div>

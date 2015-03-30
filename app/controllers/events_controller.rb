@@ -48,6 +48,7 @@ private
       :location_description,
       :logo,
       :name,
+      :organizer_id,
       :starts_at,
       :state,
       :zipcode

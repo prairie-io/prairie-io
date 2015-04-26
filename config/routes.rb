@@ -11,7 +11,7 @@ Prairie::Application.routes.draw do
 
   match "webhooks/mailchimp", to: "webhooks#mailchimp", via: [:post, :get]
 
-  %w(about).each do |page|
+  %w(about roost roost_manifest).each do |page|
     get page, to: "home##{page}", as: page
   end
 

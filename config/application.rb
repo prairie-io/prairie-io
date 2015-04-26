@@ -24,9 +24,7 @@ module Prairie
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.precompile += %w(
-      prairie/font-awesome/fontawesome-webfont.eot prairie/font-awesome/fontawesome-webfont.svg
-      prairie/font-awesome/fontawesome-webfont.ttf prairie/font-awesome/fontawesome-webfont.woff
-      home.css home.js email.css
+      home.css home.js email.css roost_worker.js
     )
 
     config.font_assets.origin = '*'

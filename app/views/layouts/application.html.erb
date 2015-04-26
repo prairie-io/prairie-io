@@ -6,6 +6,7 @@
   <meta name="bitly-verification" content="1f06f4c663d4"/>
   <title><%= page_title %></title>
   <meta name="viewport" content="width=device-width" />
+  <%= render partial: "layouts/shared/push_notifications" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,300,400|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
@@ -24,7 +25,6 @@
   </main>
 
   <%= render partial: "layouts/shared/footer" %>
-  <%= render partial: "layouts/shared/konami" %>
 
   <%= javascript_include_tag "application" %>
   <%= yield :scripts %>

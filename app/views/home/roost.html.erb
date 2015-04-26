@@ -3,7 +3,7 @@
       <link rel="manifest" href="<%= roost_manifest_path + ".json" %>">
       <script>
           //To customize filename, change the above and below.
-          var swFilename = "<%= asset_path("roost_worker.js") %>";
+          var swFilename = "<%= URI::parse(asset_path("roost_worker.js")).path %>";
           var init = function() {
               var hasPush = !!window.PushManager || !!navigator.push;
               var hasNotification = !!window.Notification;

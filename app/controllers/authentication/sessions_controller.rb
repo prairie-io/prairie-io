@@ -2,7 +2,7 @@ module Authentication
   class SessionsController < Devise::SessionsController
     skip_authorization_check
     after_filter :track_login, only: :create
-    after_filter :track_logout, only: :destroy
+    before_filter :track_logout, only: :destroy
 
     def create
       @title = "Login"

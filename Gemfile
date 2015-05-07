@@ -4,7 +4,7 @@ ruby "2.2.2"
 gem "rails"
 
 gem "active_link_to"
-gem "analytics-ruby"
+gem "analytics-ruby", "~> 2.0.0", require: "segment/analytics"
 gem "awesome_print"
 gem "aws-sdk", "< 2.0"
 gem "bourbon"

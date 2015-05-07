@@ -410,7 +410,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
-  analytics-ruby
+  analytics-ruby (~> 2.0.0)
   awesome_print
   aws-sdk (< 2.0)
   bourbon

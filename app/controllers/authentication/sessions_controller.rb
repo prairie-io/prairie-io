@@ -13,7 +13,7 @@ module Authentication
       super
     end
 
-    def after_login
+    def track_login
       if current_user
         Analytics.track(
           user_id: "#{current_user.id}",
